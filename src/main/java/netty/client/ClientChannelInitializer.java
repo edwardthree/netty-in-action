@@ -1,9 +1,12 @@
 package netty.client;
 
+import java.util.concurrent.TimeUnit;
+
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.ssl.SslContext;
+import io.netty.handler.timeout.IdleStateHandler;
 import netty.core.ProtocolDecoder;
 import netty.core.ProtocolEncoder;
 
@@ -26,7 +29,7 @@ public class ClientChannelInitializer extends ChannelInitializer<SocketChannel> 
 	        // On top of the SSL handler, add the text line codec.
 	        pipeline.addLast(new ProtocolDecoder());
 	        pipeline.addLast(new ProtocolEncoder());
-
+	        pipeline.addLast("idleStateHandler",new IdleStateHandler(30,30,30,TimeUnit.SECONDS));
 	        // and then business logic.
 	        pipeline.addLast(new ClientHandler());
 		}

@@ -1,7 +1,13 @@
 package netty.core.bean;
 
-public class ProtocolHeader {
+import java.io.Serializable;
+
+public class ProtocolHeader implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5436980356990929624L;
 	private byte flagBean;
 	private byte error;
 	private byte type;

@@ -24,7 +24,7 @@ public class Command {
 		ProtocolMsg msg = new  ProtocolMsg();
 		msg.setHeader(header);
 		msg.setBody(auth.toJSONString());
-		channel.write(msg);
+		channel.writeAndFlush(msg);
 		
 	}
 }

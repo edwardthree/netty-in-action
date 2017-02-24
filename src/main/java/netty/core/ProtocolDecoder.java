@@ -1,6 +1,5 @@
 package netty.core;
 
-import java.nio.charset.Charset;
 import java.util.List;
 
 import netty.core.bean.ProtocolHeader;

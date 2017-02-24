@@ -1,7 +1,13 @@
 package netty.core.bean;
 
-public class ProtocolMsg {
-	 private ProtocolHeader header;
+import java.io.Serializable;
+
+public class ProtocolMsg implements Serializable{
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7118165037112491504L;
+	private ProtocolHeader header;
 	 private String ip;
 	 private String body;
 	 private byte[] byteBody;
