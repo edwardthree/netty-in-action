@@ -1,8 +1,12 @@
 package netty.core.bean;
 
 import java.io.Serializable;
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProtocolMsg implements Serializable{
+	public static final Integer MAX_DATALENGTH = 65535;
 	 /**
 	 * 
 	 */
@@ -37,4 +41,38 @@ public class ProtocolMsg implements Serializable{
 		this.byteBody = byteBody;
 	}
 
+	public List<ProtocolMsg> splitMsg(ProtocolMsg msg){
+		List<ProtocolMsg> msgs = new ArrayList<ProtocolMsg>();
+		
+		byte[] body = msg.getBody().getBytes();
+		ByteBuffer buffer = ByteBuffer.wrap(body);
+		int length = body.length;
+		for(int i =0;i<(length/MAX_DATALENGTH)+1;i++){
+			ProtocolHeader header = new ProtocolHeader();
+			header.setCommand(msg.getHeader().getCommand());
+			header.setError(msg.getHeader().getError());
+			
+			header.setType(msg.getHeader().getType());
+			header.setSeq(msg.getHeader().getSeq());
+			int splitLenth = 0;
+			if(i*MAX_DATALENGTH>length){
+				FlagBean flag = new FlagBean((byte)1,(byte)4, (byte)8);
+				header.setFlag(flag.getFlagBean());
+				splitLenth = length % MAX_DATALENGTH;
+			}else{
+				FlagBean flag = new FlagBean((byte)1,(byte)4,(byte)0);
+				header.setFlag(flag.getFlagBean());
+				splitLenth = MAX_DATALENGTH;
+			}
+			
+			byte[] splitBody = new byte[splitLenth];
+			buffer.get(splitBody);
+			ProtocolMsg m = new ProtocolMsg();
+			msgs.add(m);
+		}
+		
+		
+		
+		return msgs;
+	}
 }

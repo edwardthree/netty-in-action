@@ -23,6 +23,5 @@ public class ProtocolEncoder extends MessageToByteEncoder<ProtocolMsg> {
 				out.writeShort(0);
 			}
 			out.writeBytes(in.getBody().getBytes());
-			System.out.println("±àÂë"+in.getBody());
 	}
 }

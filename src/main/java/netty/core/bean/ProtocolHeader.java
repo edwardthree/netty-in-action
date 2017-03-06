@@ -13,6 +13,9 @@ public class ProtocolHeader implements Serializable{
 	private byte type;
 	private short command;
 	private short seq;
+	private byte extend1;
+	private byte extend2;
+	private short extend3;
 	private short length;
 	
 	public byte getFlag() {
@@ -50,6 +53,24 @@ public class ProtocolHeader implements Serializable{
 	}
 	public void setLength(short length) {
 		this.length = length;
+	}
+	public byte getExtend1() {
+		return extend1;
+	}
+	public void setExtend1(byte extend1) {
+		this.extend1 = extend1;
+	}
+	public byte getExtend2() {
+		return extend2;
+	}
+	public void setExtend2(byte extend2) {
+		this.extend2 = extend2;
+	}
+	public short getExtend3() {
+		return extend3;
+	}
+	public void setExtend3(short extend3) {
+		this.extend3 = extend3;
 	}
 	
 }

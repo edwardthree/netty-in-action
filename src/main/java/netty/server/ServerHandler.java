@@ -41,7 +41,7 @@ public class ServerHandler extends SimpleChannelInboundHandler<ProtocolMsg>{
 	            System.out.println("READER_IDLE ¶Á³¬Ê±");
 	        } else if (e.state() == IdleState.WRITER_IDLE) {
 	            System.out.println("WRITER_IDLE Ð´³¬Ê±");
-	            Command.authLogin(ctx.channel(),"qqqq", "1234",(short)2);
+	            Command.authLogin(ctx.channel(),"qqqq","1234",(short)2);
 
 	        }  else if (e.state().equals(IdleState.ALL_IDLE)) {
 				System.out.println("ALL_IDLE");

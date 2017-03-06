@@ -14,9 +14,7 @@ public class ProtocolDecoder extends ByteToMessageDecoder{
 	@Override
 	protected void decode(ChannelHandlerContext paramChannelHandlerContext,
 			ByteBuf in, List<Object> out) throws Exception {
-		System.out.println("decode");
 		 if (in.readableBytes()<8) { 
-			 System.out.println("decode1");
 	            return; //小于头部8字节不做处理  
 	        }  
 		    ProtocolHeader header = new ProtocolHeader();
