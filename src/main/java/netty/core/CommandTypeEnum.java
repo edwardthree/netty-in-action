@@ -2,9 +2,9 @@ package netty.core;
 
 public enum CommandTypeEnum {
 
-	REQUEST_TYPE(1,"ÇëÇó"),
-	RESPONST_TYPE(2,"ÏìÓ¦"),
-	HEAT_BEAT(3,"ĞÄÌø");
+	REQUEST_TYPE(1,"è¯·æ±‚"),
+	RESPONST_TYPE(2,"å“åº”"),
+	HEAT_BEAT(3,"å¿ƒè·³");
 	
 	int value ;
 	String description;
